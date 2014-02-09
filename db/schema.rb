@@ -21,30 +21,31 @@ ActiveRecord::Schema.define(version: 20140209004537) do
   end
 
   create_table "attends", force: true do |t|
-    t.integer  "artest_id"
+    t.integer  "artist_id"
     t.integer  "event_id"
     t.integer  "user_id"
     t.integer  "venue_id"
     t.integer  "rating"
     t.text     "review"
-    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "attends", ["artest_id"], name: "index_attends_on_artest_id"
+  add_index "attends", ["artist_id"], name: "index_attends_on_artist_id"
   add_index "attends", ["event_id"], name: "index_attends_on_event_id"
   add_index "attends", ["user_id"], name: "index_attends_on_user_id"
   add_index "attends", ["venue_id"], name: "index_attends_on_venue_id"
 
   create_table "events", force: true do |t|
     t.string   "name"
-    t.date     "date"
+    t.string   "date"
+    t.integer  "artist_id"
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "events", ["artist_id"], name: "index_events_on_artist_id"
   add_index "events", ["venue_id"], name: "index_events_on_venue_id"
 
   create_table "users", force: true do |t|
