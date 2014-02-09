@@ -33,7 +33,7 @@ describe Artist do
     end
 
     it "should return users that has seen the artist" do
-      Artist.users_attended(artist).should eq([@u0, @u1, @u2])
+      artist.users_attended.should eq([@u0, @u1, @u2])
     end
   end
 end
