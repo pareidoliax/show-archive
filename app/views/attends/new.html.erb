@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :events do |e| %>
+  <%= f.fields_for @event do |e| %>
     Event<br />
     <%= e.text_field :name %><br />
 

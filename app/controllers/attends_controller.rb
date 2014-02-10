@@ -1,9 +1,9 @@
 class AttendsController < ApplicationController
   def new
     @attend = Attend.new
-    event = @attend.events.build
-    event.artists.build
-    event.venues.build
+    @event = @attend.events.build
+    @event.artists.build
+    @event.venues.build
   end
 
   def create
@@ -20,7 +20,7 @@ class AttendsController < ApplicationController
   private
 
   def attend_params
-    params.require(:attend).permit(:rating, :review, 
-      event_attributes: [:artist, :venue, :date, :name])
+    params.require(:attend).permit(:rating, :review, :event_id,
+      event_attributes: [ :artist_id, :venue_id, :date, :name])
   end
 end
