@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
   has_many :venues
-  belongs_to :artist
+  has_many :artist
 end

@@ -15,26 +15,21 @@ ActiveRecord::Schema.define(version: 20140209004537) do
 
   create_table "artists", force: true do |t|
     t.string   "name"
-    t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "attends", force: true do |t|
-    t.integer  "artist_id"
     t.integer  "event_id"
     t.integer  "user_id"
-    t.integer  "venue_id"
     t.integer  "rating"
     t.text     "review"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "attends", ["artist_id"], name: "index_attends_on_artist_id"
   add_index "attends", ["event_id"], name: "index_attends_on_event_id"
   add_index "attends", ["user_id"], name: "index_attends_on_user_id"
-  add_index "attends", ["venue_id"], name: "index_attends_on_venue_id"
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -52,8 +47,7 @@ ActiveRecord::Schema.define(version: 20140209004537) do
     t.string   "username"
     t.string   "name"
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,7 +55,6 @@ ActiveRecord::Schema.define(version: 20140209004537) do
   create_table "venues", force: true do |t|
     t.string   "address"
     t.string   "name"
-    t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

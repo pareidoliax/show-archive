@@ -1,4 +1,15 @@
 ShowArchive::Application.routes.draw do
+  get "attends/new"
+  get "welcome/about"
+  get 'sign_up', to: 'users#new', as: 'sign_up'
+  get 'log_in', to: 'sessions#new', as: 'log_in'
+  get 'log_out', to: 'sessions#destroy', as: 'log_out'
+
+  resources :users
+  resources :sessions
+  resources :attends
+
+  root to: 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

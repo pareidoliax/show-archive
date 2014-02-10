@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'faker'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :doc do
   gem 'sdoc', require: false

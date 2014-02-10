@@ -3,7 +3,6 @@ class CreateVenues < ActiveRecord::Migration
     create_table :venues do |t|
       t.string :address
       t.string :name
-      t.text :bio
 
       t.timestamps
     end

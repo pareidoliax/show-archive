@@ -4,18 +4,15 @@ require 'faker'
   u = User.create(username: Faker::Lorem.word(), 
     name: Faker::Name.name(), 
     email: Faker::Internet.free_email(), 
-    password_hash: "helloworld",
-    password_salt: "helloworld")
+    password_digest: "helloworld")
 end
 
 4.times do
-  a = Artist.create(name: Faker::Name.name(),
-    bio: Faker::Lorem.paragraph())
+  a = Artist.create(name: Faker::Name.name())
 end
 
 4.times do
   v = Venue.create(name: Faker::Name.name(), 
-    bio: Faker::Lorem.paragraph(),
     address: ("#{Faker::Address.building_number()}" + " " +
       "#{Faker::Address.street_address()}" + " " +
       "#{Faker::Address.city()}" + " " +
