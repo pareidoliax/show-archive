@@ -5,20 +5,17 @@ users = []
   users << User.create(username: Faker::Lorem.word(), 
     name: Faker::Name.name(), 
     email: Faker::Internet.free_email(), 
-    password_hash: "helloworld",
-    password_salt: "helloworld")
+    password_digest: "helloworld")
 end
 
 artists = []
 4.times do
-  artists << Artist.create(name: Faker::Name.name(),
-    bio: Faker::Lorem.paragraph())
+  artists << Artist.create(name: Faker::Name.name())
 end
 
 venues = []
 4.times do
   venues << Venue.create(name: Faker::Name.name(), 
-    bio: Faker::Lorem.paragraph(),
     address: ("#{Faker::Address.building_number()}" + " " +
       "#{Faker::Address.street_address()}" + " " +
       "#{Faker::Address.city()}" + " " +

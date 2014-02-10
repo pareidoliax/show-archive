@@ -1,0 +1,51 @@
+<h1>Add Attendance</h1>
+
+<%= form_for @attend do |f| %>
+  <% if @attend.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @attend.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :events do |builder| %>
+    <fieldset>
+    <%= builder.label :name %><br />
+    <%= builder.text_field :name %><br />
+
+    <%= builder.label :date %><br />
+    <%= builder.text_field :date %><br />
+
+    <%= f.fields_for :artists do |builder| %>
+      <fieldset>
+        <%= builder.label :name %><br />
+        <%= builder.text_field :name %><br />
+      </fieldset>
+    <% end %>
+
+    <%= f.fields_for :venues do |builder| %>
+      <fieldset>
+        <%= builder.label :name %><br />
+        <%= builder.text_field :name %><br />
+      </fieldset>
+    <% end %>
+
+    </fieldset>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.number_field :rating %>
+  </div>
+
+  <div class="field">
+    <%= f.label :review %><br />
+    <%= f.text_area :review %>
+  </div>
+
+  <div class="actions"><%= f.submit "Add Attendance" %></div>
+<% end %>
