@@ -1,20 +1,23 @@
 require 'faker'
 
+users = []
 4.times do
-  u = User.create(username: Faker::Lorem.word(), 
+  users << User.create(username: Faker::Lorem.word(), 
     name: Faker::Name.name(), 
     email: Faker::Internet.free_email(), 
     password_hash: "helloworld",
     password_salt: "helloworld")
 end
 
+artists = []
 4.times do
-  a = Artist.create(name: Faker::Name.name(),
+  artists << Artist.create(name: Faker::Name.name(),
     bio: Faker::Lorem.paragraph())
 end
 
+venues = []
 4.times do
-  v = Venue.create(name: Faker::Name.name(), 
+  venues << Venue.create(name: Faker::Name.name(), 
     bio: Faker::Lorem.paragraph(),
     address: ("#{Faker::Address.building_number()}" + " " +
       "#{Faker::Address.street_address()}" + " " +
@@ -23,18 +26,23 @@ end
       "#{Faker::Address.zip_code()}"))
 end
 
+events = []
 4.times do
-  e = Event.create(name: Faker::Name.name(),
-    artist: Artist.find(rand(4) + 1), 
+  events << Event.create(name: Faker::Name.name(),
+    artist: artists[rand(4)],
+    #venue: venues[rand(4)], 
     date: ("#{Faker::Number.digit()}" + "#{Faker::Number.digit()}" + 
       "#{Faker::Number.digit()}" + "#{Faker::Number.digit()}" + "-" +
       "#{Faker::Number.digit()}" + "#{Faker::Number.digit()}" + "-" +
       "#{Faker::Number.digit()}" + "#{Faker::Number.digit()}"))
 end
 
-
-rand(5..8).times do
-  a = Attend.create(user: User.find(rand(4) + 1),
+attends = []
+rand(5..10).times do
+  attends << Attend.create(user: users[rand(4)],
+    #artist: artists[rand(4)],
+    #venue: venues[rand(4)],
+    #event: events[rand(4)],
     rating: rand(5),
     review: Faker::Lorem.paragraph())
 end
