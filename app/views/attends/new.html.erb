@@ -12,29 +12,22 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :events do |builder| %>
-    <fieldset>
-    <%= builder.label :name %><br />
-    <%= builder.text_field :name %><br />
+  <%= f.fields_for :events do |e| %>
+    Event<br />
+    <%= e.text_field :name %><br />
 
-    <%= builder.label :date %><br />
-    <%= builder.text_field :date %><br />
+    <%= e.label :date %><br />
+    <%= e.text_field :date %><br />
 
-    <%= f.fields_for :artists do |builder| %>
-      <fieldset>
-        <%= builder.label :name %><br />
+    <%= e.fields_for :artists do |builder| %>
+        Artist<br />
         <%= builder.text_field :name %><br />
-      </fieldset>
     <% end %>
 
-    <%= f.fields_for :venues do |builder| %>
-      <fieldset>
-        <%= builder.label :name %><br />
+    <%= e.fields_for :venues do |builder| %>
+        Venue<br />
         <%= builder.text_field :name %><br />
-      </fieldset>
     <% end %>
-
-    </fieldset>
   <% end %>
 
   <div class="field">
