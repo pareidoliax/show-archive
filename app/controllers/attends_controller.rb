@@ -2,8 +2,8 @@ class AttendsController < ApplicationController
   def new
     @attend = Attend.new
     @event = @attend.events.build
-    @event.artists.build
-    @event.venues.build
+    @artist = @event.artist.build
+    @venue = @event.venue.build
   end
 
   def create
