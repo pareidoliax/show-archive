@@ -12,21 +12,21 @@
     </div>
   <% end %>
 
-  <%= f.fields_for @event do |e| %>
+  <%= f.fields_for @event do |event_form| %>
     Event<br />
-    <%= e.text_field :name %><br />
+    <%= event_form.text_field :name %><br />
 
-    <%= e.label :date %><br />
-    <%= e.text_field :date %><br />
+    <%= event_form.label :date %><br />
+    <%= event_form.text_field :date %><br />
 
-    <%= e.fields_for :artists do |builder| %>
+    <%= event_form.fields_for @artist do |artist_form| %>
         Artist<br />
-        <%= builder.text_field :name %><br />
+        <%= artist_form.text_field :name %><br />
     <% end %>
 
-    <%= e.fields_for :venues do |builder| %>
+    <%= event_form.fields_for @venue do |venue_form| %>
         Venue<br />
-        <%= builder.text_field :name %><br />
+        <%= venue_form.text_field :name %><br />
     <% end %>
   <% end %>
 
